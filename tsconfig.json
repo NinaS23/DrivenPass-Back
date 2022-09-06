@@ -12,4 +12,3 @@
   }
 }
 
-//não precisa por type module no packge-json ( já vem isso no tsconfig.json)
