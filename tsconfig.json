@@ -1,0 +1,15 @@
+
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "es2016",
+    "module": "es6",
+    "moduleResolution": "node",
+		"outDir": "dist"
+  },
+  "ts-node": {
+    "esm": true
+  }
+}
+
+//não precisa por type module no packge-json ( já vem isso no tsconfig.json)

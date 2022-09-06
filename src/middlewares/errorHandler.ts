@@ -1,0 +1,16 @@
+import httpStatus from "../utils/httpStatus.js";
+import { NextFunction, Request, Response } from "express";
+
+export default async function errorHandler(error, req: Request, res: Response, next: NextFunction) {
+   if(error.code === "not-found"){
+    return res.status(httpStatus.NOT_FOUND).send(error.message)
+   }
+   if(error.code === "unauthorized"){
+    return res.status(httpStatus.UNAUTHORIZED).send(error.message)
+   }
+   if(error.code === "no-content"){
+    return res.status(httpStatus.NO_CONTENT).send(error.message)
+   }
+    res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR)
+    
+  }
