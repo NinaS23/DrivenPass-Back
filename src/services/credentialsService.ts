@@ -27,8 +27,8 @@ async function cryptPassword(password:string) {
 }
 
 async function validateCredentialTitle(title:string, userId:number) {
-    const validateCredentialTitle = await credentialRepository.isTitleExistentByUserId(title, userId);
-    if (validateCredentialTitle !== null) {
+    const validateTitleByUserId = await credentialRepository.isTitleExistentByUserId(title, userId);
+    if (validateTitleByUserId !== null) {
         throw { code: "unauthorized", message: "title is existent" }
     }
 }
