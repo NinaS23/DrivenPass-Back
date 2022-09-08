@@ -11,6 +11,7 @@ export default async function errorHandler(error, req: Request, res: Response, n
    if(error.code === "no-content"){
     return res.status(httpStatus.NO_CONTENT).send(error.message)
    }
+   
     res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR)
     
   }
