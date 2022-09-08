@@ -56,9 +56,12 @@ async function sendCredentials(allCredentials: any) {
    return arrCredentials;
 }
 
-export async function deleteCredential(credentialId: number) {
+export async function deleteCredential(credentialId: number,userId:number) {
    await findCredential(credentialId);
-   await credentialRepository.deleteCredential(credentialId);
+  const deletion =  await credentialRepository.deleteCredential(credentialId,userId);
+  if(deletion.count === 0){
+     throw {code:"unauthorized", message:"credential not found"}
+  }
    return {delete:"done"};
 }
 

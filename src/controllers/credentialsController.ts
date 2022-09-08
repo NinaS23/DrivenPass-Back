@@ -19,10 +19,11 @@ export async function viewCredentialByUserId(req: Request, res: Response) {
 } 
 
 export async function deleteCredential(req: Request, res: Response) {
-    const {id} = req.params;
+    const { id } = req.params;
+    const userId: number = res.locals.idUser;
     const credentialId = Number(id)
-    
-    const isDeleted = await credentialsService.deleteCredential(credentialId)
+
+    const isDeleted = await credentialsService.deleteCredential(credentialId,userId)
 
     res.status(httpStatus.OK).send(isDeleted)
 } 
