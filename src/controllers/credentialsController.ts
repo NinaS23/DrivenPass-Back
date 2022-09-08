@@ -4,7 +4,7 @@ import * as credentialsService from "../services/credentialsService.js"
 
 
 export async function registerCredential(req: Request, res: Response) {
-    const { username, password, title, url } = req.body;
+    const { username, password, title, url } : {username: string, password:string, title:string, url:string} = req.body;
      
     await credentialsService.registerCredential({username,password,title,url});
 
