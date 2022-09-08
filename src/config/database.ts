@@ -1,19 +1,5 @@
-import dotenv from "dotenv";
-import pg from "pg";
-dotenv.config();
+import pkg from "@prisma/client"; // precisamos instalar esse pacote!
 
-const { Pool } = pg;
-
-const user = 'postgres';
-const password = process.env.DB_PASSWORD;
-const host = 'localhost';
-const port = 5432;
-const database = 'drivenpass';
-
-export const connection = new Pool({
-  user,
-  password,
-  host,
-  port,
-  database
-});
+const { PrismaClient } = pkg;
+const client = new PrismaClient();
+export default client;
