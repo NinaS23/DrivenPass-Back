@@ -3,15 +3,22 @@ import { credentials } from "@prisma/client";
 import { typeCredentialInsert } from "../types/credentialTypes.js";
 
 
-export async function isTitleExistentByUserId(title:string,userId:number){
+export async function isTitleExistentByUserId(title: string, userId: number) {
     const result = await client.credentials.findFirst({
-       where: {userId, title}
-      })
-     return result;
-      
+        where: { userId, title }
+    })
+    return result;
+
 }
 
-export async function insertCrendentialData(credential:typeCredentialInsert){
+export async function insertCrendentialData(credential: typeCredentialInsert) {
     await client.credentials.create({ data: credential })
-      
+
+}
+
+export async function allCredentialsByUserId(userId: number) {
+    const result = await client.credentials.findMany({
+        where: { userId }
+    })
+    return result;
 }

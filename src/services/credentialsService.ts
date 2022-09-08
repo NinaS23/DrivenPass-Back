@@ -32,3 +32,12 @@ async function validateCredentialTitle(title:string, userId:number) {
         throw { code: "unauthorized", message: "title is existent" }
     }
 }
+
+
+export async function viewCredentialByUserId(userId: number) {
+    const allCredentials = await credentialRepository.allCredentialsByUserId(userId);
+    if (allCredentials === null) {
+        throw { code: "no-content", message: "no credentials yet" }
+    }
+    return allCredentials;
+}

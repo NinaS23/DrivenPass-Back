@@ -11,3 +11,9 @@ export async function registerCredential(req: Request, res: Response) {
     res.sendStatus(httpStatus.CREATED)
 } 
 
+export async function viewCredentialByUserId(req: Request, res: Response) {
+    const  userId:number = res.locals.idUser
+    const credentials =  await credentialsService.viewCredentialByUserId(userId)
+    
+    res.status(httpStatus.OK).send(credentials)
+} 
