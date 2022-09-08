@@ -6,19 +6,16 @@ import { typeCredentialInsert } from "../types/credentialTypes.js";
 
 
 export async function registerCredential(credential: typeCredentialInsert) {
-    const validateCredentialTitle = await credentialRepository.isTitleExistentByUserId(credential.title, credential.userId)
-    if (validateCredentialTitle !== null) {
-        throw { code: "unauthorized", message: "title is existent" }
-    }
-    const encryptedPassword = await cryptPassword(credential.password)
+    await validateCredentialTitle(credential.title,credential.userId);
+    const encryptedPassword = await cryptPassword(credential.password);
     const credentialData : typeCredentialInsert = {
         userId: credential.userId,
         username: credential.username,
         password: encryptedPassword,
         title: credential.title,
         url: credential.url
-    }
-    await credentialRepository.insertCrendentialData(credentialData)
+    };
+    await credentialRepository.insertCrendentialData(credentialData);
     
 }
 
@@ -27,4 +24,11 @@ async function cryptPassword(password:string) {
     const encryptedString = cryptr.encrypt(password);
     return encryptedString;
 
+}
+
+async function validateCredentialTitle(title:string, userId:number) {
+    const validateCredentialTitle = await credentialRepository.isTitleExistentByUserId(title, userId);
+    if (validateCredentialTitle !== null) {
+        throw { code: "unauthorized", message: "title is existent" }
+    }
 }
