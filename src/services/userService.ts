@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import Jwt from "jsonwebtoken";
 import * as userRepository from "../repositories/userRepository.js";
 
 
@@ -17,18 +18,41 @@ export async function registerUser(email: string, password: string) {
 }
 
 export async function loginUser(email: string, password: string) {
-    await findEmail(email,"login");
+   const user = await findEmail(email,"login");
+   await dcryptPassword(password,user.password)
+   const token = await createToken(user.id)
+   const dataUser = {
+    token,
+    userId: user.id,
+  };
+   return dataUser;
 }
 
 
 
-export async function findEmail(email: string, type:string) {
-    const verifyEmailForInsert = await userRepository.isEmailNew(email);
-    if (verifyEmailForInsert && type === "insert") {
+async function findEmail(email: string, type: string) {
+    const validateEmail = await userRepository.isEmailNew(email);
+    if (validateEmail && type === "insert") {
         throw { code: "unauthorized", message: "email alredy exist" }
     }
-    if(!verifyEmailForInsert && type === "login"){
+    if (!validateEmail && type === "login") {
         throw { code: "unauthorized", message: "email was not found" }
     }
-    
+    return validateEmail;
+}
+
+async function dcryptPassword(password:string, userPassword:string) {
+    const passwordVerify = bcrypt.compareSync(password, userPassword);
+    if(!passwordVerify){
+        throw {code:"unauthorized", message:"email or password incorrect!"}
+    }
+
+}
+
+async function createToken(id:number){
+    const iduser = id;
+    const secretKey = process.env.JWT_SECRET;
+    const config = { expiresIn: 60 * 60 * 2 };
+    const token = Jwt.sign({ iduser }, secretKey, config);
+    return token;
 }

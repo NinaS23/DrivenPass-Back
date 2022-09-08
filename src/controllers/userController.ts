@@ -13,7 +13,7 @@ export async function registerUser(req: Request, res: Response) {
 
 export async function loginUser(req: Request, res: Response) {
     const { email, password } = req.body;
-    await userService.loginUser(email, password);
+    const dataUser = await userService.loginUser(email, password);
 
-    res.sendStatus(httpStatus.OK)
+    res.status(httpStatus.OK).send(dataUser)
 } 
