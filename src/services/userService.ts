@@ -52,7 +52,7 @@ async function dcryptPassword(password:string, userPassword:string) {
 async function createToken(id:number){
     const iduser = id;
     const secretKey = process.env.JWT_SECRET;
-    const config = { expiresIn: 60 * 60 * 2 };
+    const config = { expiresIn: 60 * 60 * 6 };
     const token = Jwt.sign({ iduser }, secretKey, config);
     return token;
 }
