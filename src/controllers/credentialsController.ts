@@ -13,7 +13,7 @@ export async function registerCredential(req: Request, res: Response) {
 
 export async function viewCredentialByUserId(req: Request, res: Response) {
     const  userId:number = res.locals.idUser
-    const credentials =  await credentialsService.viewCredentialByUserId(userId)
+    const credentials = await credentialsService.viewCredentialByUserId(userId)
     
     res.status(httpStatus.OK).send(credentials)
 } 
