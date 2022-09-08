@@ -1,0 +1,13 @@
+import { Request, Response } from "express";
+import httpStatus from "../utils/httpStatus.js";
+import * as credentialsService from "../services/credentialsService.js"
+
+
+export async function registerCredential(req: Request, res: Response) {
+    const { username, password, title, url } = req.body;
+     
+    await credentialsService.registerCredential({username,password,title,url});
+
+    res.sendStatus(httpStatus.CREATED)
+} 
+
