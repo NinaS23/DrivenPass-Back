@@ -37,7 +37,6 @@ export async function viewCredentialByUserId(userId: number) {
 }
 
 async function sendCredentials(allCredentials: any) {
-    console.log(allCredentials)
     let arrCredentials = []
     for (let credential of allCredentials) {
        const passwordDecrypted = await utils.decryptPassword(credential.password)
