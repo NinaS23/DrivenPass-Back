@@ -1,4 +1,5 @@
 import * as utils from "../utils/utils.js";
+import { credentials } from "@prisma/client";
 import * as credentialRepository from "../repositories/credentialRepository.js";
 import { typeCredentialInsert } from "../types/credentialTypes.js";
 
