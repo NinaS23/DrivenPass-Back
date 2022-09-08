@@ -1,4 +1,3 @@
-import client from "../config/database.js";
 import { credentials } from "@prisma/client";
 
 

@@ -12,7 +12,7 @@ export async function insertUser(user: typeInsertUserData) {
 //find email 
 export async function isEmailNew(email:string) {
     const result = await client.users.findFirst({
-        where: { email},
+        where: {email},
       })
      return result;
       
