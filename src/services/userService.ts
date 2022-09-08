@@ -36,7 +36,7 @@ async function findEmail(email: string, type: string) {
         throw { code: "unauthorized", message: "email alredy exist" }
     }
     if (!validateEmail && type === "login") {
-        throw { code: "unauthorized", message: "email was not found" }
+        throw { code: "unauthorized", message: "email or password incorrect!" }
     }
     return validateEmail;
 }
