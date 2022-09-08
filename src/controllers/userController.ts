@@ -9,3 +9,11 @@ export async function registerUser(req: Request, res: Response) {
 
     res.sendStatus(httpStatus.CREATED)
 } 
+
+
+export async function loginUser(req: Request, res: Response) {
+    const { email, password } = req.body;
+    await userService.loginUser(email, password);
+
+    res.sendStatus(httpStatus.OK)
+} 
