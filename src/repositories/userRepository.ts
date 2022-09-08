@@ -1,7 +1,7 @@
 import client from "../config/database.js";
 import { users } from "@prisma/client";
 
-type typeInsertUserData = Omit<users, "id">//tem que tirar o id pq ele não é insertado
+type typeInsertUserData = Omit<users, "id" | "createdAt">//tem que tirar o id pq ele não é insertado
 
 //create user
 export async function insertUser(user: typeInsertUserData) {
