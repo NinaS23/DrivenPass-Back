@@ -9,5 +9,6 @@ const credentialRoute = Router();
 
 credentialRoute.post("/register-credential", validateSchemaMiddleware(credentialSchema),validateToken, credentialController.registerCredential);
 credentialRoute.get("/credentials",validateToken, credentialController.viewCredentialByUserId);
+credentialRoute.delete("/credential/:id",validateToken, credentialController.deleteCredential);
 
 export default credentialRoute;

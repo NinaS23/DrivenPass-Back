@@ -54,3 +54,17 @@ async function sendCredentials(allCredentials: any) {
     }
    return arrCredentials;
 }
+
+export async function deleteCredential(credentialId: number) {
+   await findCredential(credentialId);
+   await credentialRepository.deleteCredential(credentialId);
+   return {delete:"done"};
+}
+
+async function findCredential(id:number) {
+    const credential = await credentialRepository.findCredential(id)
+    if(credential === null){
+        throw {code:"not-found",message:"credential was not found to be deleted"}
+    }
+  
+}

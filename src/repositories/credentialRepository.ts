@@ -22,3 +22,13 @@ export async function allCredentialsByUserId(userId: number) {
     })
     return result;
 }
+
+export async function deleteCredential(id: number) {
+    await client.credentials.delete({ where: { id } })
+
+}
+
+export async function findCredential(id: number) {
+    const result = await client.credentials.findFirst({ where: { id } })
+    return result;
+}
