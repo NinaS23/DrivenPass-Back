@@ -8,5 +8,6 @@ const safeNoteRoute = Router();
 
 safeNoteRoute.post("/safeNote",validateSchemaMiddleware(safeNoteSchema),validateToken, safeNoteController.createSafeNote);
 safeNoteRoute.get("/safeNote",validateToken, safeNoteController.getSafeNotesByUserId);
+safeNoteRoute.get("/safeNote/:id",validateToken, safeNoteController.getSafeNoteById);
 
 export default safeNoteRoute;

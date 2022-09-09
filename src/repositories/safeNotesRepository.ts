@@ -20,5 +20,17 @@ export async function getAllSafeNotes(userId: number) {
     })
    
     return result;
-  
+}
+
+export async function getSafeNote(id:number,userId: number) {
+    const result = await client.safeNotes.findFirst({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    })
+   
+    return result;
 }

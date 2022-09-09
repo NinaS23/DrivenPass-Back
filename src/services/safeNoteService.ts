@@ -21,3 +21,8 @@ export async function getAllSafeNotes(userId:number) {
    return allSafeNotes;
 }
 
+export async function getNoteById(id:number,userId:number) {
+    await sqlUtils.findUserById(userId)
+    const safeNote = await safeNoteRepositorie.getSafeNote(id,userId)
+    return safeNote;
+}

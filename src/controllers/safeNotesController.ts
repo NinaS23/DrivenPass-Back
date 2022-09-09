@@ -14,3 +14,11 @@ export async function getSafeNotesByUserId(req: Request, res: Response) {
     const allSafeNotes = await safeNoteService.getAllSafeNotes(userId)
     res.status(httpStatus.OK).send(allSafeNotes)
 } 
+
+export async function getSafeNoteById(req: Request, res: Response) {
+    const userId: number = res.locals.idUser
+    const { id } = req.params;
+    const noteId = Number(id);
+    const safeNote = await safeNoteService.getNoteById(noteId,userId)
+    res.status(httpStatus.OK).send(safeNote)
+} 
