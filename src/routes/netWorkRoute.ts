@@ -9,5 +9,6 @@ const networkRoute = Router()
 
 networkRoute.post("/network", validateSchemaMiddleware(wifiSchema),validateToken, networkController.createNetwork)
 networkRoute.get("/networks",validateToken, networkController.getAllNetwork)
+networkRoute.get("/network/:id",validateToken, networkController.getNetworkById)
 
 export default networkRoute;

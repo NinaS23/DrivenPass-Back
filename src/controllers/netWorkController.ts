@@ -15,3 +15,11 @@ export async function getAllNetwork(req: Request, res: Response) {
     const networks = await netWorkService.getAllNetworks(userId)
     res.status(httpStatus.OK).send(networks)
 }
+
+export async function getNetworkById(req: Request, res: Response) {
+    const userId: number = res.locals.idUser;
+    const { id } = req.params;
+    const netWorkId = Number(id)
+    const network = await netWorkService.getNetworkById(userId,netWorkId)
+    res.status(httpStatus.OK).send(network)
+}

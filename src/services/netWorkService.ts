@@ -23,3 +23,12 @@ export async function getAllNetworks(userId:number) {
     }
     return networks;
 }
+
+export async function getNetworkById(userId:number,id:number) {
+    await findUserById(userId) 
+    const network = await netWorkRepositorie.getNetwork(id,userId)
+    if(network === null){
+        throw { code: "not-found", message: "network was not found" }
+    }
+    return network
+}

@@ -13,3 +13,16 @@ export async function getNetworks(userId: number) {
 
     return result;
 }
+
+export async function getNetwork(id: number, userId: number) {
+    const result = await client.wifi.findFirst({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    })
+
+    return result;
+}
