@@ -2,6 +2,7 @@ import * as utils from "../utils/utils.js";
 import { credentials } from "@prisma/client";
 import * as credentialRepository from "../repositories/credentialRepository.js";
 import { typeCredentialInsert } from "../types/credentialTypes.js";
+import { findUserById } from "../utils/sqlUtils.js";
 
 
 
@@ -56,6 +57,12 @@ async function sendCredentials(allCredentials: any) {
    return arrCredentials;
 }
 
+export async function getCredentialById(id: number, userId: number) {
+    await findUserById(userId)
+    const credential = await credentialRepository.getCredential(id, userId)
+    return credential;
+}
+
 export async function deleteCredential(credentialId: number,userId:number) {
    await findCredential(credentialId);
   const deletion =  await credentialRepository.deleteCredential(credentialId,userId);
@@ -72,3 +79,4 @@ async function findCredential(id:number) {
     }
   
 }
+

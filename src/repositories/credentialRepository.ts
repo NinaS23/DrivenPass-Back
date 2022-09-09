@@ -23,6 +23,19 @@ export async function allCredentialsByUserId(userId: number) {
     return result;
 }
 
+export async function getCredential(id: number, userId: number) {
+    const result = await client.credentials.findFirst({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    })
+
+    return result;
+}
+
 export async function deleteCredential(id: number,userId:number) {
     const result = await client.credentials.deleteMany({
         where: {

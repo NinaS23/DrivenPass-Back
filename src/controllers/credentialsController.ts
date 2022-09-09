@@ -18,6 +18,18 @@ export async function viewCredentialByUserId(req: Request, res: Response) {
     res.status(httpStatus.OK).send(credentials)
 } 
 
+
+export async function getCredentialById(req: Request, res: Response) {
+    const  userId:number = res.locals.idUser;
+    const { id } = req.params;
+    if (!id) {
+        res.sendStatus(httpStatus.UNPROCESSABLE_ENTITY)
+    }
+    const credentialId = Number(id);
+    const credential = await credentialsService.getCredentialById(credentialId,userId);
+    res.status(httpStatus.OK).send(credential)
+} 
+
 export async function deleteCredential(req: Request, res: Response) {
     const { id } = req.params;
     const userId: number = res.locals.idUser;
