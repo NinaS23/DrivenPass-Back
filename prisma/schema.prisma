@@ -24,7 +24,7 @@ model cards {
   name           String
   title          String  @unique
   CVC            String
-  expirationDate String
+  expirationDate String 
   password       String
   isVirtual      Boolean @default(false)
   type           Type
