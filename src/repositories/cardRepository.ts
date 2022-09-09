@@ -18,3 +18,16 @@ export async function getAllCards(userId: number) {
     })
     return result;
 }
+
+export async function getCard(id: number, userId: number) {
+    const result = await client.cards.findFirst({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    })
+
+    return result;
+}

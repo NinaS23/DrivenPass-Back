@@ -37,3 +37,12 @@ export async function getAllCard(userId: number) {
     }
     return cards;
 }
+
+export async function getCardById(userId:number, id:number) {
+    await findUserById(userId)
+    const card = await cardRepositorie.getCard(id,userId)
+    if(card === null){
+        throw {code:"not-found", message:"this card does not exist"}
+    }
+    return card;
+}

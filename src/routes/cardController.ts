@@ -8,5 +8,6 @@ const cardRoute = Router()
 
 cardRoute.post("/card", validateSchemaMiddleware(cardSchema),validateToken, cardController.createCard)
 cardRoute.get("/cards",validateToken, cardController.getAllCards)
+cardRoute.get("/card/:id",validateToken, cardController.getCardById)
 
 export default cardRoute;
