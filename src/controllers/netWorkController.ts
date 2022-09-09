@@ -23,3 +23,11 @@ export async function getNetworkById(req: Request, res: Response) {
     const network = await netWorkService.getNetworkById(userId,netWorkId)
     res.status(httpStatus.OK).send(network)
 }
+
+export async function deleteNetWork(req: Request, res: Response) {
+    const userId: number = res.locals.idUser;
+    const { id } = req.params;
+    const netWorkId = Number(id)
+    const network = await netWorkService.deleteNetWork(userId,netWorkId)
+    res.status(httpStatus.OK).send(network)
+}

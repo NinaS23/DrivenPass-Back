@@ -26,3 +26,20 @@ export async function getNetwork(id: number, userId: number) {
 
     return result;
 }
+
+export async function isNetWorkExistent(id: number) {
+    const result = await client.wifi.findFirst({ where: { id } })
+    return result;
+}
+
+export async function deleteNetWork(id: number, userId: number) {
+    const result = await client.wifi.deleteMany({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    });
+    return result;
+}
