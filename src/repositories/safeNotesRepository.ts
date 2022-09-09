@@ -11,18 +11,18 @@ export async function findTitle(userId: number, title: string) {
 
 
 export async function insertSafeNote(safeNote: TsafeNOtesDate) {
-     await client.safeNotes.create({ data: safeNote })
+    await client.safeNotes.create({ data: safeNote })
 }
 
 export async function getAllSafeNotes(userId: number) {
     const result = await client.safeNotes.findMany({
         where: { userId }
     })
-   
+
     return result;
 }
 
-export async function getSafeNote(id:number,userId: number) {
+export async function getSafeNote(id: number, userId: number) {
     const result = await client.safeNotes.findFirst({
         where: {
             AND: [
@@ -31,6 +31,23 @@ export async function getSafeNote(id:number,userId: number) {
             ],
         },
     })
-   
+
+    return result;
+}
+
+export async function deleteSafeNote(id: number, userId: number) {
+    const result = await client.safeNotes.deleteMany({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    });
+    return result;
+}
+
+export async function isSafeNoteExistent(id: number) {
+    const result = await client.safeNotes.findFirst({ where: { id } })
     return result;
 }

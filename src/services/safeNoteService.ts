@@ -26,3 +26,21 @@ export async function getNoteById(id:number,userId:number) {
     const safeNote = await safeNoteRepositorie.getSafeNote(id,userId)
     return safeNote;
 }
+
+export async function deleteNoteById(id: number, userId: number) {
+    await sqlUtils.findUserById(userId)
+    await isSafeNoteExistent(id);
+    const deletion = await safeNoteRepositorie.deleteSafeNote(id, userId);
+    if (deletion.count === 0) {
+        throw { code: "unauthorized", message: "note not found" }
+    }
+    return { delete: "done" };
+}
+
+async function isSafeNoteExistent(id: number) {
+    const note = await safeNoteRepositorie.isSafeNoteExistent(id)
+    if (note === null) {
+        throw { code: "not-found", message: "note was not found to be deleted" }
+    }
+
+}
