@@ -31,3 +31,17 @@ export async function getCard(id: number, userId: number) {
 
     return result;
 }
+
+
+export async function deleteCard(id: number,userId:number) {
+    const result = await client.cards.deleteMany({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    });
+    console.log(result)
+    return result;
+}

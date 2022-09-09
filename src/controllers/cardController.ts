@@ -24,3 +24,12 @@ export async function getCardById(req: Request, res: Response) {
     const card = await cardService.getCardById(userId, cardId)
     res.status(httpStatus.OK).send(card)
 } 
+
+export async function deleteCard(req: Request, res: Response) {
+    const userId: number = res.locals.idUser
+    const { id } = req.params;
+    const cardId: number = Number(id);
+    const card = await cardService.deleteCard(userId, cardId)
+    res.status(httpStatus.OK).send(card)
+} 
+

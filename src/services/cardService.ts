@@ -46,3 +46,12 @@ export async function getCardById(userId:number, id:number) {
     }
     return card;
 }
+
+export async function deleteCard(userId: number, id: number) {
+    await findUserById(userId)
+    const deletion = await cardRepositorie.deleteCard(id, userId)
+    if(deletion.count === 0){
+        throw { code: "not-found", message: "note was not found to be deleted" }
+    }
+    return { delete: "done" }
+}
