@@ -1,6 +1,7 @@
 import { TcardData } from "../types/cardTypes";
 import * as cardRepositorie from "../repositories/cardRepository.js"
 import { cryptPassword } from "../utils/utils.js";
+import { findUserById } from "../utils/sqlUtils.js";
 
 export async function createCard(card: TcardData, userId: number) {
     await isTitleCardExistent(userId, card.title)
@@ -26,4 +27,13 @@ async function isTitleCardExistent(userId:number,title:string) {
         throw { code: "unauthorized", message: "title is existent" }
     }
 
+}
+
+export async function getAllCard(userId: number) {
+    await findUserById(userId)
+    const cards = await cardRepositorie.getAllCards(userId)
+    if (cards === null) {
+        throw { code: "no-content", message: "no card created yet" }
+    }
+    return cards;
 }

@@ -7,6 +7,6 @@ import { validateToken } from "../middlewares/tokenMIddleware.js";
 const cardRoute = Router()
 
 cardRoute.post("/card", validateSchemaMiddleware(cardSchema),validateToken, cardController.createCard)
-
+cardRoute.get("/cards",validateToken, cardController.getAllCards)
 
 export default cardRoute;

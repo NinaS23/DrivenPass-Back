@@ -11,3 +11,10 @@ export async function findTitleCard(userId:number,title:string) {
     })
     return result;
 }
+
+export async function getAllCards(userId: number) {
+    const result = await client.cards.findMany({
+        where: { userId }
+    })
+    return result;
+}
