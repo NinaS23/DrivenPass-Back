@@ -17,3 +17,8 @@ export async function isEmailNew(email:string) {
      return result;
       
 }
+
+export async function findUser(id: number) {
+    const result = await client.users.findFirst({ where: { id } })
+    return result;
+}
