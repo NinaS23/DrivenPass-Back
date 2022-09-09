@@ -9,3 +9,9 @@ export async function createNetwork(req: Request, res: Response) {
     await netWorkService.createNetwork(network, userId)
     res.sendStatus(httpStatus.CREATED)
 }
+
+export async function getAllNetwork(req: Request, res: Response) {
+    const userId: number = res.locals.idUser;
+    const networks = await netWorkService.getAllNetworks(userId)
+    res.status(httpStatus.OK).send(networks)
+}

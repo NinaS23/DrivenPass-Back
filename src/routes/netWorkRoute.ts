@@ -8,5 +8,6 @@ import { validateToken } from "../middlewares/tokenMIddleware.js";
 const networkRoute = Router()
 
 networkRoute.post("/network", validateSchemaMiddleware(wifiSchema),validateToken, networkController.createNetwork)
+networkRoute.get("/networks",validateToken, networkController.getAllNetwork)
 
 export default networkRoute;
