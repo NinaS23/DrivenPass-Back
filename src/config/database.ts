@@ -1,4 +1,4 @@
-import pkg from "@prisma/client"; // precisamos instalar esse pacote!
+import pkg from "@prisma/client"; 
 
 const { PrismaClient } = pkg;
 const client = new PrismaClient();
