@@ -24,6 +24,12 @@ export async function getAllSafeNotes(userId:number) {
 export async function getNoteById(id:number,userId:number) {
     await sqlUtils.findUserById(userId)
     const safeNote = await safeNoteRepositorie.getSafeNote(id,userId)
+    if(safeNote === null){
+        throw {code:"not-found", message:"crendential not found "}
+    }
+    if(safeNote.userId !== userId){
+        throw {code:"unauthorized", message:"not found in yors credentials"}
+    }
     return safeNote;
 }
 
