@@ -2,7 +2,7 @@ import { Router } from "express";
 import userRoute from "./userRoute.js";
 import credentialRoute from "./credentialsRoute.js";
 import safeNoteRoute from "./safeNotesRoute.js";
-import cardRoute from "./cardController.js";
+import cardRoute from "./cardRoute.js";
 import networkRoute from "./netWorkRoute.js";
 import documentRoute from "./documentRoute.js";
 
