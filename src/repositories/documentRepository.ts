@@ -21,3 +21,17 @@ export async function getDocuments(userId: number) {
 
     return result;
 }
+
+
+export async function getDocument(id: number, userId: number) {
+    const result = await client.documents.findFirst({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    })
+
+    return result;
+}

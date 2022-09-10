@@ -38,3 +38,12 @@ export async function getAllDocuments(userid:number) {
     }
     return documents
 }
+
+export async function getDocument(userid:number,documentId:number) {
+    await findUserById(userid)
+    const document = await documentRepository.getDocument(documentId,userid)
+    if(document === null){
+        throw {code:"not-found", message:"this document does not exist"}
+    }
+    return document;
+}

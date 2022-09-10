@@ -8,5 +8,6 @@ const documentRoute = Router();
 
 documentRoute.post("/document", validateSchemaMiddleware(documentSchema),validateToken,documentController.createDocument);
 documentRoute.get("/documents", validateToken,documentController.getAllDocumentsByUserId);
+documentRoute.get("/document/:id", validateToken,documentController.getDocumentById);
 
 export default documentRoute;

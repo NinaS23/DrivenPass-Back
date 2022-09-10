@@ -63,6 +63,9 @@ async function sendCredentials(allCredentials: any) {
 export async function getCredentialById(id: number, userId: number) {
     await findUserById(userId)
     const credential = await credentialRepository.getCredential(id, userId)
+    if(credential === null){
+        throw {code:"not-found", message:"this credential does not exist"}
+    }
     const passwordDecrypted = await utils.decryptPassword(credential.password)
     const returnCredential = {
         ...credential,
