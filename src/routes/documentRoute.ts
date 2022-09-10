@@ -6,5 +6,7 @@ import { documentSchema } from "../schemas/documentSchema.js";
 
 const documentRoute = Router();
 
-documentRoute.post("/document", validateSchemaMiddleware(documentSchema),validateToken,documentController.createDocument)
+documentRoute.post("/document", validateSchemaMiddleware(documentSchema),validateToken,documentController.createDocument);
+documentRoute.get("/documents", validateToken,documentController.getAllDocumentsByUserId);
+
 export default documentRoute;
