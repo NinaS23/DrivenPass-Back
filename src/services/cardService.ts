@@ -44,6 +44,9 @@ export async function getCardById(userId:number, id:number) {
     if(card === null){
         throw {code:"not-found", message:"this card does not exist"}
     }
+    if(card.userId !== userId){
+        throw {code:"unauthorized", message:"not found "}
+    }
     return card;
 }
 

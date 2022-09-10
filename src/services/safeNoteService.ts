@@ -28,7 +28,7 @@ export async function getNoteById(id:number,userId:number) {
         throw {code:"not-found", message:"crendential not found "}
     }
     if(safeNote.userId !== userId){
-        throw {code:"unauthorized", message:"not found in yors credentials"}
+        throw {code:"unauthorized", message:"not found "}
     }
     return safeNote;
 }

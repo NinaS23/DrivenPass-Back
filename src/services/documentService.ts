@@ -45,6 +45,9 @@ export async function getDocument(userid:number,documentId:number) {
     if(document === null){
         throw {code:"not-found", message:"this document does not exist"}
     }
+    if(document.userId !== userid){
+        throw {code:"unauthorized", message:"not found in yors "}
+    }
     return document;
 }
 

@@ -30,6 +30,10 @@ export async function getNetworkById(userId: number, id: number) {
     if (network === null) {
         throw { code: "not-found", message: "network was not found" }
     }
+    if(network.userId !== userId){
+        throw {code:"unauthorized", message:"not found "}
+    }
+  
     return network
 }
 
