@@ -12,7 +12,6 @@ export async function registerCredential(req: Request, res: Response) {
 } 
 
 export async function viewCredentialByUserId(req: Request, res: Response) {
-    console.log("oi")
     const  userId:number = res.locals.idUser;
     const credentials = await credentialsService.viewCredentialByUserId(userId)
     console.log(credentials)
