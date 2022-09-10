@@ -24,7 +24,7 @@ model cards {
   name           String
   title          String  @unique
   CVC            String
-  expirationDate String 
+  expirationDate String
   password       String
   isVirtual      Boolean @default(false)
   type           Type
@@ -60,10 +60,29 @@ model users {
   cards       cards[]
   credentials credentials[]
   safeNotes   safeNotes[]
+  documents   documents[]
+}
+
+model documents {
+  id             Int       @id @default(autoincrement())
+  userId         Int
+  users          users     @relation(fields: [userId], references: [id])
+  docType        Document  @default(RG)
+  fullName       String
+  expirationDate String
+  createdAt      DateTime? @default(now()) @db.Timestamp(6)
+  issueDate      String
+  registerNumber String    @unique
+  issuingBody    String
 }
 
 enum Type {
   debit
   credit
   debitAndCredit
+}
+
+enum Document {
+  RG
+  CNH
 }
