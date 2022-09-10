@@ -28,3 +28,7 @@ async function isRegisterNumberUnique(number: string, userId:number) {
         throw {code:"unauthorized",message:"RegisterNumber alredy exists"}
     }
 }
+
+export async function getAllDocuments(userid:number) {
+    
+}

@@ -12,6 +12,6 @@ export async function createDocument(req:Request, res:Response) {
 
 export async function getAllDocumentsByUserId(req:Request, res:Response) {
     const  userId:number = res.locals.idUser;
-    
-    res.sendStatus(httpStatus.OK)
+    const documents = await documentService.getAllDocuments(userId)
+    res.status(httpStatus.OK).send(documents)
 }
