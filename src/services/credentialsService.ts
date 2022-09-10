@@ -56,7 +56,6 @@ async function sendCredentials(allCredentials: any) {
 
      arrCredentials.push(credential)
     }
-    console.log(arrCredentials)
    return arrCredentials;
 }
 

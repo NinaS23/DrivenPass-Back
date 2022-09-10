@@ -42,6 +42,5 @@ export async function deleteCard(id: number,userId:number) {
             ],
         },
     });
-    console.log(result)
     return result;
 }
