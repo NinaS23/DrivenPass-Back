@@ -25,7 +25,6 @@ async function validFullName(name: string) {
 
 async function isRegisterNumberUnique(number: string, userId:number) {
     const isNumberValid = await documentRepository.findNumberRegister(number,userId)
-    console.log(isNumberValid)
     if(isNumberValid !== null){
         throw {code:"unauthorized",message:"RegisterNumber alredy exists"}
     }
