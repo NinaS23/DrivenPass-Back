@@ -16,6 +16,7 @@ export async function registerCredential(credential: typeCredentialInsert) {
         title: credential.title,
         url: credential.url
     };
+  
     await credentialRepository.insertCrendentialData(credentialData);
 
 }
@@ -34,6 +35,7 @@ export async function viewCredentialByUserId(userId: number) {
         throw { code: "no-content", message: "no credentials yet" }
     }
     const credentialsArr = await sendCredentials(allCredentials)
+    
     return credentialsArr;
 
 }
@@ -54,6 +56,7 @@ async function sendCredentials(allCredentials: any) {
 
      arrCredentials.push(credential)
     }
+    console.log(arrCredentials)
    return arrCredentials;
 }
 
@@ -66,7 +69,6 @@ export async function getCredentialById(id: number, userId: number) {
         password:passwordDecrypted
     }
     return returnCredential;
-
 }
 
 export async function deleteCredential(credentialId: number,userId:number) {
