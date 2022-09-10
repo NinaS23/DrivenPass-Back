@@ -72,7 +72,7 @@ model documents {
   expirationDate String
   createdAt      DateTime? @default(now()) @db.Timestamp(6)
   issueDate      String
-  registerNumber String    @unique
+  registerNumber String    
   issuingBody    String
 }
 
