@@ -60,7 +60,13 @@ async function sendCredentials(allCredentials: any) {
 export async function getCredentialById(id: number, userId: number) {
     await findUserById(userId)
     const credential = await credentialRepository.getCredential(id, userId)
-    return credential;
+    const passwordDecrypted = await utils.decryptPassword(credential.password)
+    const returnCredential = {
+        ...credential,
+        password:passwordDecrypted
+    }
+    return returnCredential;
+
 }
 
 export async function deleteCredential(credentialId: number,userId:number) {
