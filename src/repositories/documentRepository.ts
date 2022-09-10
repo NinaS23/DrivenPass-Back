@@ -35,3 +35,21 @@ export async function getDocument(id: number, userId: number) {
 
     return result;
 }
+
+export async function deleteDocument(id: number, userId: number) {
+    const result = await client.documents.deleteMany({
+        where: {
+            AND: [
+                { userId },
+                { id },
+            ],
+        },
+    });
+    return result;
+}
+
+
+export async function isDocumentExistent(id: number) {
+    const result = await client.documents.findFirst({ where: { id } })
+    return result;
+}

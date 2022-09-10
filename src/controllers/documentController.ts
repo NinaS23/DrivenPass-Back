@@ -23,3 +23,11 @@ export async function getDocumentById(req: Request, res: Response) {
     const document = await documentService.getDocument(userId,documentId);
     res.status(httpStatus.OK).send(document);
 }
+
+export async function deleteDocument(req: Request, res: Response) {
+    const userId: number = res.locals.idUser;
+    const { id } = req.params;
+    const documentId = Number(id);
+    const document = await documentService.deleteDocument(userId,documentId);
+    res.status(httpStatus.OK).send(document);
+}

@@ -47,3 +47,21 @@ export async function getDocument(userid:number,documentId:number) {
     }
     return document;
 }
+
+export async function deleteDocument(userid:number,documentId:number) {
+    await findUserById(userid)
+    await isDocumentExistent(documentId)
+    const document = await documentRepository.deleteDocument(documentId,userid)
+    if(document === null){
+        throw {code:"not-found", message:"this document does not exist"}
+    }
+    return {deletion:"done"};
+}
+
+async function isDocumentExistent(id: number) {
+    const note = await documentRepository.isDocumentExistent(id)
+    if (note === null) {
+        throw { code: "not-found", message: "document was not found to be deleted" }
+    }
+
+}
