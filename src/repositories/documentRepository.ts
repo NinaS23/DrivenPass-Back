@@ -13,3 +13,11 @@ export async function findNumberRegister(registerNumber:string,userId:number) {
     })
     return result
 }
+
+export async function getDocuments(userId: number) {
+    const result = await client.documents.findMany({
+        where: { userId }
+    })
+
+    return result;
+}
