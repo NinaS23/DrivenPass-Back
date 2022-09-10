@@ -4,7 +4,7 @@ import DateExtension from '@joi/date';
 const Joi = joi.extend(DateExtension);
 
 
-const documentSchema = joi.object({
+export const documentSchema = joi.object({
     docType: joi.string().valid("RG" , "CNH").required(),
     fullName: joi.string().required(),
     expirationDate: Joi.date().format('YYYY-MM-DD').raw().required(),
