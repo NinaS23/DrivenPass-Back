@@ -19,7 +19,6 @@
 # Table of Contents
 
 - [Getting Started](#getting-started)
-- [API Reference](#api-reference)
   - [Models](#models)
     - [users ](#user-model-users)
     - [safeNote ](#safeNote-model-safeNotes)
