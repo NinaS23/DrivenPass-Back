@@ -25,7 +25,7 @@
     - [wifi model](#wifi-model-wifi)
     - [Document model](#document-model-documents)
     - [Credential model](#credential-model-credentials)
-    - [ card ](#card-model-cards)
+    - [  card ](#card-model-cards)
 <!-- Getting Started -->
 
 
@@ -78,7 +78,7 @@ npm start
 - `note`: The content of the safeNote. Up to 1000 characters long. `text`
 - `createdAt`: The date and time when the note was created. `timestamp`
 
-### Credit card model _`cards`_
+###  card model _`cards`_
 
 - `id`: A unique identifier for each credit card. `serial primary key`
 - `userId`: The user that created the credit card. `int`
