@@ -74,7 +74,7 @@ npm start
 
 - `id`: A unique identifier for each note. `serial primary key`
 - `userId`: The user that created the note. `int`
-- `title`: A title for the note. Each user can only have one safeNote with the same title. Up to 50 characters long. `text`
+- `title`: A title for the note. Each user can only have one safeNote with the same title.  `text`
 - `note`: The content of the safeNote. Up to 1000 characters long. `text`
 - `createdAt`: The date and time when the note was created. `timestamp`
 
