@@ -108,8 +108,8 @@ npm start
 - `id`: A unique identifier for each document. `serial primary key`
 - `userId`: The user that created the document. `int`
 - `fullName`: The full name found on the document. `text`
-- `issueDate`: The emission date of the document. The date must follow the format **_DD/MM/YYYY_**.`text`
-- `expirationDate`: The expiration date of the document. The date must follow the format **_DD/MM/YYYY_**.`text`
+- `issueDate`: The emission date of the document. The date must follow the format **YYYY-MM-DD**.`text`
+- `expirationDate`: The expiration date of the document. The date must follow the format **YYYY-MM-DD**.`text`
 - `registerNumber` : The registry number of the document. `text`
 - `issuingBody`: The issuing agency of the document. `text`
 - `docType`: The document'd type. Must either be '**CNH**' or '**RG**'. `enum`
