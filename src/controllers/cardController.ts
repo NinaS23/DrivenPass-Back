@@ -8,6 +8,7 @@ export async function createCard(req: Request, res: Response) {
     const card: TcardData = req.body;
     const userId: number = res.locals.idUser
     await cardService.createCard(card, userId)
+    
     res.sendStatus(httpStatus.CREATED)
 }
 
